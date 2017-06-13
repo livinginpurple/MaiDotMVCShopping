@@ -1,31 +1,8 @@
-﻿
+﻿@*指定 model 資料型態*@
+@model List<MaiDotMvcShopping.Models.RouteTest.TempProduct>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    IList<MaiDotMvcShopping.Models.RouteTest.TempProduct> productionList =
-        new List<MaiDotMvcShopping.Models.RouteTest.TempProduct>();
-
-    productionList.Add(new MaiDotMvcShopping.Models.RouteTest.TempProduct
-    {
-        Id = 1,
-        Name = "自動鉛筆",
-        Price = 30.0m,
-    });
-
-    productionList.Add(new MaiDotMvcShopping.Models.RouteTest.TempProduct
-    {
-        Id = 2,
-        Name = "記事本",
-        Price = 50.0m,
-    });
-
-    productionList.Add(new MaiDotMvcShopping.Models.RouteTest.TempProduct
-    {
-        Id = 3,
-        Name = "橡皮擦",
-        Price = 10.0m,
-    });
 }
 
 <h2>商品列表</h2>
@@ -38,7 +15,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in productionList)
+        @*使用 foreach 列出所有商品至表格元素內*@
+        @foreach (var product in this.Model)
         {
             <tr>
                 <td>@product.Id</td>

@@ -11,8 +11,11 @@ namespace MaiDotMvcShopping.Controllers
         // GET: RouteTest
         public ActionResult Index()
         {
-            //return Content("這是 Index");
-            return View();
+            // 取得所有商品，並放入 result
+            var result = Models.RouteTest.TempProduct.GetAllProducts();
+
+            // 將 result (所有商品) 傳送至 View
+            return View(result);
         }
 
         // e.g. RouteTest/Index2?id=1
