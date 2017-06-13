@@ -13,6 +13,13 @@ namespace MaiDotMvcShopping.Controllers
             return View();
         }
 
+        public ActionResult Index2()
+        {
+            return Content(
+                "<html><body><h1>這是一段訊息</h1></body></html>"
+                );
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
