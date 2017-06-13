@@ -10,6 +10,8 @@ namespace MaiDotMvcShopping.Controllers
     {
         public ActionResult Index()
         {
+
+            //ez-git push test
             return View();
         }
 
