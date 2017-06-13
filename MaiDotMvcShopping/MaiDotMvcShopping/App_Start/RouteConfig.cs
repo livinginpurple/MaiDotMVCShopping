@@ -18,6 +18,18 @@ namespace MaiDotMvcShopping
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "RouteTest",
+                url: "{controller}/{action}/{id}/{page}",
+                defaults: new
+                {
+                    controller = "RouteTest",
+                    action = "Index4",
+                    id = UrlParameter.Optional,
+                    page = UrlParameter.Optional
+                }
+                );
         }
     }
 }
