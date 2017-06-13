@@ -11,6 +11,7 @@ namespace MaiDotMvcShopping.Controllers
         // GET: RouteTest
         public ActionResult Index()
         {
+            // Team Explorer test
             // 取得所有商品，並放入 result
             var result = Models.RouteTest.TempProduct.GetAllProducts();
 
