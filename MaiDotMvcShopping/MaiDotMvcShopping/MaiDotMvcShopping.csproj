@@ -213,6 +213,7 @@
       <DependentUpon>Carts.edmx</DependentUpon>
       <LastGenOutput>Carts.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Carts.edmx.sql" />
     <Content Include="Models\Carts.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Carts.edmx</DependentUpon>
