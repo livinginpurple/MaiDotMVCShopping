@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    IList<MaiDotMvcShopping.Models.RouteTest.TempProduct> productionList =
+        new List<MaiDotMvcShopping.Models.RouteTest.TempProduct>();
+
+    productionList.Add(new MaiDotMvcShopping.Models.RouteTest.TempProduct
+    {
+        Id = 1,
+        Name = "自動鉛筆",
+        Price = 30.0m,
+    });
+
+    productionList.Add(new MaiDotMvcShopping.Models.RouteTest.TempProduct
+    {
+        Id = 2,
+        Name = "記事本",
+        Price = 50.0m,
+    });
+
+    productionList.Add(new MaiDotMvcShopping.Models.RouteTest.TempProduct
+    {
+        Id = 3,
+        Name = "橡皮擦",
+        Price = 10.0m,
+    });
+}
+
+<h2>商品列表</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>編號</th>
+            <th>名稱</th>
+            <th>售價</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in productionList)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>

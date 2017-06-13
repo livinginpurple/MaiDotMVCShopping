@@ -11,7 +11,8 @@ namespace MaiDotMvcShopping.Controllers
         // GET: RouteTest
         public ActionResult Index()
         {
-            return Content("這是 Index");
+            //return Content("這是 Index");
+            return View();
         }
 
         // e.g. RouteTest/Index2?id=1
