@@ -23,5 +23,31 @@ namespace MaiDotMvcShopping.Controllers
             // 將 result 傳送至 View
             return View(result);
         }
+
+        /// <summary>
+        /// 商品建立頁面
+        /// </summary>
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 商品建立頁面－資料傳回處理
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Create(Models.Product model)
+        {
+            using (Models.CartsEntities db = new Models.CartsEntities())
+            {
+                // 將回傳的資料 model，加入到 Products
+                db.Products.Add(model);
+
+                // 儲存異動的資料
+                db.SaveChanges();
+            }
+            return View();
+        }
     }
 }
