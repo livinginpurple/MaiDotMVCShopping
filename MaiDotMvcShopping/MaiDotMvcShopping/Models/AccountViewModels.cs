@@ -64,6 +64,11 @@ namespace MaiDotMvcShopping.Models
 
     public class RegisterViewModel
     {
+        [Required] // 必填欄位
+        [StringLength(maximumLength: 256, ErrorMessage = "{0} 的長度至少必須為 {2} 個字元。", MinimumLength = 1)] // 字元長度1~256
+        [Display(Name = "暱稱")]// 欄位顯示文字
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
