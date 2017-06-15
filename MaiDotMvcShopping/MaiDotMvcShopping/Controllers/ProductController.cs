@@ -14,6 +14,9 @@ namespace MaiDotMvcShopping.Controllers
             // 宣告 result 儲存商品列表
             List<Models.Product> result = new List<Models.Product>();
 
+            // 接收 Create 傳來的成功訊息
+            ViewBag.ResultMessage = TempData["ResultMessage"];
+
             // 使用 CartsEntities 類別，名稱為 db
             using (Models.CartsEntities db = new Models.CartsEntities())
             {
@@ -39,6 +42,15 @@ namespace MaiDotMvcShopping.Controllers
         [HttpPost]
         public ActionResult Create(Models.Product model)
         {
+            if (!this.ModelState.IsValid) //如果資料驗證失敗
+            {
+                // 失敗訊息
+                ViewBag.ResultMessage = "資料有誤，請檢查";
+
+                // 停留在 Create 頁面，並保留原先填入資料。
+                return View(model);
+            }
+
             using (Models.CartsEntities db = new Models.CartsEntities())
             {
                 // 將回傳的資料 model，加入到 Products
@@ -46,8 +58,12 @@ namespace MaiDotMvcShopping.Controllers
 
                 // 儲存異動的資料
                 db.SaveChanges();
+
+                TempData["ResultMessage"] = $"商品{model.Name}成功建立";
+
+                return RedirectToAction("Index");
             }
-            return View();
+
         }
     }
 }

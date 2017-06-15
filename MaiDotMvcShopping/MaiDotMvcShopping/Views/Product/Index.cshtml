@@ -5,6 +5,10 @@
 }
 
 <h2>商品列表</h2>
+@if (ViewBag.ResultMessage != null) // 判斷如果有訊息，則顯示訊息。
+{
+    @Html.Label("info", (string)ViewBag.ResultMessage, new { @class = "text-info" })
+}
 <table class="table">
     <thead>
         <tr>
@@ -19,13 +23,13 @@
         @*使用 foreach 將所有商品列出*@
         @foreach (var product in this.Model)
         {
-        <tr>
-            <td>@product.Id</td>
-            <td>@product.Name</td>
-            <td>@product.Description</td>
-            <td>@product.Price</td>
-            <td>@product.Quantity</td>
-        </tr>
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.Quantity</td>
+            </tr>
         }
     </tbody>
 </table>
