@@ -65,5 +65,69 @@ namespace MaiDotMvcShopping.Controllers
             }
 
         }
+
+        /// <summary>
+        /// 編輯商品頁面
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        public ActionResult Edit(int id)
+        {
+            // 取得 Product.Id 等於輸入 id 的資料
+            using (Models.CartsEntities db = new Models.CartsEntities())
+            {
+                var result = (from s in db.Products
+                             where s.Id == id
+                             select s).FirstOrDefault();
+
+                if (result != default(Models.Product)) // 判斷此 id 是否有資料
+                {
+                    return View(result); // 如果有資料，回傳編輯商品頁面
+                }
+
+                // 如果沒有資料，顯示錯誤訊息，並將頁面導回 Index 頁面。
+                TempData["ResultMessage"] = "資料有誤，請重新操作";
+                return RedirectToAction("Index");
+            }
+        }
+
+        /// <summary>
+        /// 編輯商品頁面－資料傳回處理
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Edit(Models.Product model)
+        {
+            if (!this.ModelState.IsValid)// 判斷使用者輸入的資料是否正確
+            {
+                // 資料不正確，則導回原頁面 (Edit 頁面)
+                return View(model);
+            }
+
+            using (Models.CartsEntities db = new Models.CartsEntities())
+            {
+                // 取得 Product.Id 等於輸入 id 的資料
+                var result = (from s in db.Products
+                              where s.Id == model.Id
+                              select s).FirstOrDefault();
+
+                // 儲存使用者變更資料
+                result.Name = model.Name;
+                result.Description = model.Description;
+                result.CategoryId = model.CategoryId;
+                result.Price = model.Price;
+                result.PublishDate = model.PublishDate;
+                result.Status = model.Status;
+                result.DefaultImageId = model.DefaultImageId;
+                result.Quantity = model.Quantity;
+
+                // 儲存所有變更
+                db.SaveChanges();
+
+                // 設定成功訊息，並導回 Index 頁面
+                TempData["ResultMessage"] = $"商品{model.Name}已成功編輯";
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

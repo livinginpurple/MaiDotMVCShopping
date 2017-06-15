@@ -17,6 +17,8 @@
             <th>描述</th>
             <th>售價</th>
             <th>庫存</th>
+            <th>編輯</th>
+            <th>刪除</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +31,8 @@
                 <td>@product.Description</td>
                 <td>@product.Price</td>
                 <td>@product.Quantity</td>
+                <td>@Html.ActionLink("編輯", "Edit", new { id = product.Id }, new { @class = "btn btn-info" })</td>
+                <td>@Html.ActionLink("刪除", "Delete", new { id = product.Id }, new { @class = "btn btn-danger" })</td>
             </tr>
         }
     </tbody>
