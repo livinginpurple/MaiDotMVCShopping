@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Metadata\ProductPartial.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>Carts.tt</DependentUpon>
     </Compile>
