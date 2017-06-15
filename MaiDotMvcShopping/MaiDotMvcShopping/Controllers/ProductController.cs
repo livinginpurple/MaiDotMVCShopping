@@ -76,8 +76,8 @@ namespace MaiDotMvcShopping.Controllers
             using (Models.CartsEntities db = new Models.CartsEntities())
             {
                 var result = (from s in db.Products
-                             where s.Id == id
-                             select s).FirstOrDefault();
+                              where s.Id == id
+                              select s).FirstOrDefault();
 
                 if (result != default(Models.Product)) // 判斷此 id 是否有資料
                 {
@@ -129,5 +129,36 @@ namespace MaiDotMvcShopping.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        /// <summary>
+        /// 刪除商品
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            using (Models.CartsEntities db = new Models.CartsEntities())
+            {
+                // 取得 Product.Id 等於輸入 id 的資料
+                var result = (from s in db.Products where s.Id == id select s).FirstOrDefault();
+                if (result != default(Models.Product)) // 判斷此 id 是否有資料
+                {
+                    db.Products.Remove(result);
+
+                    // 儲存所有變更
+                    db.SaveChanges();
+
+                    // 設定成功訊息，並導回 Index 頁面
+                    TempData["ResultMessage"] = $"商品{result.Name}已成功刪除";
+                    return RedirectToAction("Index");
+                }
+
+                // 如果沒有資料，顯示錯誤訊息，並將頁面導回 Index 頁面。
+                TempData["ResultMessage"] = "指定資料不存在，無法刪除，請重新操作";
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }
