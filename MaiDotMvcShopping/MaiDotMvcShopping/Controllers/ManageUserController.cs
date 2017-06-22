@@ -47,6 +47,7 @@ namespace MaiDotMvcShopping.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public ActionResult Edit(Models.ManageUser model)
         {
             return View();
