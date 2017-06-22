@@ -50,6 +50,7 @@ namespace MaiDotMvcShopping.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Models.ManageUser model)
         {
             using (Models.UserEntities db = new Models.UserEntities())
@@ -73,6 +74,19 @@ namespace MaiDotMvcShopping.Controllers
 
             // 設定錯誤訊息
             TempData["ResultMessage"] = $"使用者 {model.UserName} 不存在，請重新操作。";
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(string id)
+        {
+            using (Models.UserEntities db = new Models.UserEntities())
+            {
+                var result = db.AspNetUsers.Find(id);
+                return View(result);
+            }
+
+            // 設定錯誤訊息
+            TempData["ResultMessage"] = $"使用者 {id} 不存在，請重新操作。";
             return RedirectToAction("Index");
         }
     }
