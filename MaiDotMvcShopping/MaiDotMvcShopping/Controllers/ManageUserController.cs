@@ -79,15 +79,18 @@ namespace MaiDotMvcShopping.Controllers
 
         public ActionResult Details(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                // 設定錯誤訊息
+                TempData["ResultMessage"] = $"使用者 {id} 不存在，請重新操作。";
+                return RedirectToAction("Index");
+            }
+
             using (Models.UserEntities db = new Models.UserEntities())
             {
                 var result = db.AspNetUsers.Find(id);
                 return View(result);
             }
-
-            // 設定錯誤訊息
-            TempData["ResultMessage"] = $"使用者 {id} 不存在，請重新操作。";
-            return RedirectToAction("Index");
         }
     }
 }
