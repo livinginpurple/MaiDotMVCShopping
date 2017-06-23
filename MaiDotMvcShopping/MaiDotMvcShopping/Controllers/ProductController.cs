@@ -136,6 +136,7 @@ namespace MaiDotMvcShopping.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             using (Models.CartsEntities db = new Models.CartsEntities())

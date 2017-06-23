@@ -92,5 +92,30 @@ namespace MaiDotMvcShopping.Controllers
                 return View(result);
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string id)
+        {
+            using (Models.UserEntities db = new Models.UserEntities())
+            {
+                var result = db.AspNetUsers.Find(id);
+                if (result != default(Models.AspNetUsers))
+                {
+                    db.AspNetUsers.Remove(result);
+
+                    // 儲存所有變更
+                    db.SaveChanges();
+
+                    // 設定成功訊息，並導回 Index 頁面
+                    TempData["ResultMessage"] = $"使用者 {result.UserName} 已成功刪除";
+                    return RedirectToAction("Index");
+                }
+
+                // 如果沒有資料，顯示錯誤訊息，並將頁面導回 Index 頁面。
+                TempData["ResultMessage"] = $"使用者 {id} 不存在，無法刪除，請重新操作。";
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
