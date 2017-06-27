@@ -182,6 +182,8 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>User.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Carts.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -260,7 +262,6 @@
     <Content Include="Models\Carts.edmx.diagram">
       <DependentUpon>Carts.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\Models.vsspell" />
     <EntityDeploy Include="Models\User.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>User.Designer.cs</LastGenOutput>
