@@ -203,6 +203,7 @@
     <Compile Include="Models\ManageUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Metadata\ProductPartial.cs" />
+    <Compile Include="Models\Operation.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>Carts.tt</DependentUpon>
     </Compile>
