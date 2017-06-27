@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MaiDotMvcShopping.Models
+namespace MaiDotMvcShopping.Models.Carts
 {
     /// <summary>
     /// 購物車內單一商品類別

@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Services;
 
-namespace MaiDotMvcShopping.Models
+namespace MaiDotMvcShopping.Models.Carts
 {
     /// <summary>
     /// 購物車操作類別
@@ -14,7 +14,7 @@ namespace MaiDotMvcShopping.Models
         /// </summary>
         /// <returns> Session["Cart"] </returns>
         [WebMethod(EnableSession = true)]//取用 Session
-        public static Models.Cart GetCurrentCart()
+        public static Models.Carts.Cart GetCurrentCart()
         {
             // 確認 System.Web.HttpContext.Current 是否為 NULL
             if (HttpContext.Current != null)
