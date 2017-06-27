@@ -12,6 +12,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>商品圖</th>
             <th>編號</th>
             <th>名稱</th>
             <th>描述</th>
@@ -26,6 +27,7 @@
         @foreach (var product in this.Model)
         {
             <tr>
+                <td><img src="@product.DefaultImageURL" width="50" height="50" /></td>
                 <td>@product.Id</td>
                 <td>@product.Name</td>
                 <td>@product.Description</td>
