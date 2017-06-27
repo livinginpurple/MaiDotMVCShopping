@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/13/2017 17:27:15
+-- Date Created: 06/27/2017 17:25:24
 -- Generated from EDMX file: C:\Users\RogerChen\Documents\Visual Studio 2015\Projects\MaiDotMVCShopping\MaiDotMvcShopping\MaiDotMvcShopping\Models\Carts.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [Carts];
+USE [aspnet-MaiDotMvcShopping-20170612093632];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -22,6 +22,9 @@ GO
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Products];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -37,7 +40,8 @@ CREATE TABLE [dbo].[Products] (
     [PublishDate] datetime  NOT NULL,
     [Status] bit  NOT NULL,
     [DefaultImageId] bigint  NULL,
-    [Quantity] int  NOT NULL
+    [Quantity] int  NOT NULL,
+    [DefaultImageURL] nvarchar(max)  NULL
 );
 GO
 

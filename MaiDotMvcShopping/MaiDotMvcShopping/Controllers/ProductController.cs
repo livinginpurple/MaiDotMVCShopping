@@ -120,6 +120,7 @@ namespace MaiDotMvcShopping.Controllers
                 result.Status = model.Status;
                 result.DefaultImageId = model.DefaultImageId;
                 result.Quantity = model.Quantity;
+                result.DefaultImageURL = model.DefaultImageURL;
 
                 // 儲存所有變更
                 db.SaveChanges();
