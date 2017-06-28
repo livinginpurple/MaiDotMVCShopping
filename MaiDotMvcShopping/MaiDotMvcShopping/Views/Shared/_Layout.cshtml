@@ -26,6 +26,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("商品管理", "Index", "Product")</li>
                     <li>@Html.ActionLink("會員管理", "Index", "ManageUser")</li>
+                    <li id="Cart">
+                        @{
+                            Html.RenderPartial("_CartPartial");
+                        }
+                    </li>
                 </ul>
 
                 @{
