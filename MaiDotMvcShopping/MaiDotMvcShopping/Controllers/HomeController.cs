@@ -10,7 +10,11 @@ namespace MaiDotMvcShopping.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (Models.CartsEntities db = new Models.CartsEntities())
+            {
+                var result = db.Products.ToList();
+                return View(result);
+            }
         }
 
         public ActionResult Index2()
