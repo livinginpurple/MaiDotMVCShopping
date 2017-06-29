@@ -12,24 +12,9 @@ namespace MaiDotMvcShopping.Controllers
         {
             // 取得目前購物車
             var Cart = Models.Carts.Operation.GetCurrentCart();
+            Cart.AddProduct(1);
 
-            //
-            if (Cart.cartItems.Any())
-            {
-                Cart.cartItems.First().Quantity += 1;
-            }
-            else
-            {
-                Cart.cartItems.Add(
-                    new Models.Carts.CartItem()
-                    {
-                        Id = 1,
-                        Name = "測試",
-                        Quantity = 1,
-                        Price = 100m
-                    });
-            }
-
+            // 回傳目前購物車中的商品總價
             return Content($"目前購物車總共：{Cart.TotalAmount} 元");
         }
     }
