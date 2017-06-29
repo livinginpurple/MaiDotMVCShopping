@@ -69,6 +69,11 @@ namespace MaiDotMvcShopping.Models.Carts
             return true;
         }
 
+        /// <summary>
+        /// 新增一筆Product
+        /// </summary>
+        /// <param name="productId">ProductId</param>
+        /// <returns></returns>
         public bool AddProduct(int productId)
         {
             var FindItem = this.cartItems.Where(w => w.Id == productId)
