@@ -6,7 +6,35 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @section Scripts{
+        @*購物車JS*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /// <summary>
+                /// 網頁載入完成時，執行的 function
+                /// </summary>
+                /// <returns></returns>
+                console.log("Ready;!");
+            });
 
+            function AddToCart(productId) {
+                /// <summary>
+                /// 加入編號為 productId 的商品到購物車
+                /// </summary>
+                /// <param name="productId">The product identifier.</param>
+                /// <returns></returns>
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddToCart", "Cart")',
+                    data: { id: productId },
+                    success: function (message) {
+                        // 將回傳的購物車頁面，填入 li#Cart
+                        $('li#Cart').html(message);
+                    }
+                });
+            }
+        </script>
+    }
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
