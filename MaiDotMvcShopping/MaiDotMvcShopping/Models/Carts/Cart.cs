@@ -122,6 +122,16 @@ namespace MaiDotMvcShopping.Models.Carts
             return true;
         }
 
+        /// <summary>
+        /// 清空購物車
+        /// </summary>
+        /// <returns></returns>
+        public bool ClearCart()
+        {
+            this.cartItems.Clear();
+            return true;
+        }
+
         public IEnumerator<CartItem> GetEnumerator()
         {
             return ((IEnumerable<CartItem>)cartItems).GetEnumerator();

@@ -40,5 +40,16 @@ namespace MaiDotMvcShopping.Controllers
             CurrentCart.RemoveProduct(id);
             return PartialView("_CartPartial");
         }
+
+        /// <summary>
+        /// 清空購物車
+        /// </summary>
+        /// <returns>回傳購物車頁面</returns>
+        public ActionResult ClearCart()
+        {
+            var CurrentCart = Models.Carts.Operation.GetCurrentCart();
+            CurrentCart.ClearCart();
+            return PartialView("_CartPartial");
+        }
     }
 }
