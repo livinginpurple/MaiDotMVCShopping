@@ -102,6 +102,26 @@ namespace MaiDotMvcShopping.Models.Carts
             return true;
         }
 
+        /// <summary>
+        /// 移除一筆 Product
+        /// </summary>
+        /// <param name="productId">The product identifier.</param>
+        /// <returns></returns>
+        public bool RemoveProduct(int productId)
+        {
+            var FindItem = this.cartItems.Where(w => w.Id == productId)
+                .Select(s => s).FirstOrDefault();
+
+            // 判斷相同 Id 的 CartItem 是否已經存在購物車內
+            if (FindItem != default(Models.Carts.CartItem))
+            {
+                // 存在於購物車內，將商品移除
+                this.cartItems.Remove(FindItem);
+            }
+
+            return true;
+        }
+
         public IEnumerator<CartItem> GetEnumerator()
         {
             return ((IEnumerable<CartItem>)cartItems).GetEnumerator();
