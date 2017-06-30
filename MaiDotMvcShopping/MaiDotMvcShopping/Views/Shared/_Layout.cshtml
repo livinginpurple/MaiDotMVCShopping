@@ -37,6 +37,26 @@
                     $('li#Cart').html(message);
                 }
             });
+
+            function RemoveFromCart(productId) {
+                /// <summary>
+                /// 從購物車移除編號為 productId 的商品
+                /// </summary>
+                /// <param name="productId">The product identifier.</param>
+                /// <returns></returns>
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RemoveFromCart", "Cart")',
+                    data: { id: productId },
+                    error: function (message) {
+                        console.log(message);
+                    },
+                    success: function (message) {
+                        // 將回傳的購物車頁面，填入 li#Cart
+                        $('li#Cart').html(message);
+                    }
+                });
+            }
         }
     </script>
 </head>
