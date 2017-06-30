@@ -35,6 +35,7 @@
                 success: function (message) {
                     // 將回傳的購物車頁面，填入 li#Cart
                     $('li#Cart').html(message);
+                    console.log(productId + " 已加入");
                 }
             });
         }
@@ -55,6 +56,7 @@
                 success: function (message) {
                     // 將回傳的購物車頁面，填入 li#Cart
                     $('li#Cart').html(message);
+                    console.log(productId + " 已刪除");
                 }
             });
         }
