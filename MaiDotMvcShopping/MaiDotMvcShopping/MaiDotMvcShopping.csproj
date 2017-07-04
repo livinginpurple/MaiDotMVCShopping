@@ -217,6 +217,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Metadata\ProductPartial.cs" />
     <Compile Include="Models\Carts\Operation.cs" />
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Carts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>Carts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OrderModel\Ship.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>Carts.tt</DependentUpon>
