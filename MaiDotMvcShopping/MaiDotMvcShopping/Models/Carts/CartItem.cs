@@ -41,5 +41,10 @@ namespace MaiDotMvcShopping.Models.Carts
                 return this.Price * this.Quantity;
             }
         }
+
+        /// <summary>
+        /// 商品圖片
+        /// </summary>
+        public string DefaultImageURL { get; set; }
     }
 }
