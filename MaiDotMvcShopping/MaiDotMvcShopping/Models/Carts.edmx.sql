@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/04/2017 15:27:01
+-- Date Created: 07/04/2017 16:04:07
 -- Generated from EDMX file: C:\Users\RogerChen\Documents\Visual Studio 2015\Projects\MaiDotMVCShopping\MaiDotMvcShopping\MaiDotMvcShopping\Models\Carts.edmx
 -- --------------------------------------------------
 
@@ -17,6 +17,9 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_OrderOrderDetail]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrderDetailSet] DROP CONSTRAINT [FK_OrderOrderDetail];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -24,6 +27,12 @@ GO
 
 IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Products];
+GO
+IF OBJECT_ID(N'[dbo].[OrderSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrderSet];
+GO
+IF OBJECT_ID(N'[dbo].[OrderDetailSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrderDetailSet];
 GO
 
 -- --------------------------------------------------
@@ -45,8 +54,8 @@ CREATE TABLE [dbo].[Products] (
 );
 GO
 
--- Creating table 'OrderSet'
-CREATE TABLE [dbo].[OrderSet] (
+-- Creating table 'Orders'
+CREATE TABLE [dbo].[Orders] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [UserId] nvarchar(max)  NOT NULL,
     [ReceiverName] nvarchar(max)  NOT NULL,
@@ -55,8 +64,8 @@ CREATE TABLE [dbo].[OrderSet] (
 );
 GO
 
--- Creating table 'OrderDetailSet'
-CREATE TABLE [dbo].[OrderDetailSet] (
+-- Creating table 'OrderDetails'
+CREATE TABLE [dbo].[OrderDetails] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [OrderId] int  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
@@ -75,15 +84,15 @@ ADD CONSTRAINT [PK_Products]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'OrderSet'
-ALTER TABLE [dbo].[OrderSet]
-ADD CONSTRAINT [PK_OrderSet]
+-- Creating primary key on [Id] in table 'Orders'
+ALTER TABLE [dbo].[Orders]
+ADD CONSTRAINT [PK_Orders]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'OrderDetailSet'
-ALTER TABLE [dbo].[OrderDetailSet]
-ADD CONSTRAINT [PK_OrderDetailSet]
+-- Creating primary key on [Id] in table 'OrderDetails'
+ALTER TABLE [dbo].[OrderDetails]
+ADD CONSTRAINT [PK_OrderDetails]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -91,18 +100,18 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [OrderId] in table 'OrderDetailSet'
-ALTER TABLE [dbo].[OrderDetailSet]
+-- Creating foreign key on [OrderId] in table 'OrderDetails'
+ALTER TABLE [dbo].[OrderDetails]
 ADD CONSTRAINT [FK_OrderOrderDetail]
     FOREIGN KEY ([OrderId])
-    REFERENCES [dbo].[OrderSet]
+    REFERENCES [dbo].[Orders]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_OrderOrderDetail'
 CREATE INDEX [IX_FK_OrderOrderDetail]
-ON [dbo].[OrderDetailSet]
+ON [dbo].[OrderDetails]
     ([OrderId]);
 GO
 

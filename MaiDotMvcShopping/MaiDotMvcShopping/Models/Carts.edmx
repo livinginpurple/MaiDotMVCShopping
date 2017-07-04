@@ -7,11 +7,11 @@
     <Schema Namespace="CartsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="CartsModelStoreContainer">
     <EntitySet Name="Products" EntityType="CartsModel.Store.Products" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OrderSet" EntityType="CartsModel.Store.OrderSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OrderDetailSet" EntityType="CartsModel.Store.OrderDetailSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="CartsModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderDetails" EntityType="CartsModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="OrderOrderDetail" Association="CartsModel.Store.OrderOrderDetail">
-      <End Role="Order" EntitySet="OrderSet" />
-      <End Role="OrderDetail" EntitySet="OrderDetailSet" />
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Products">
@@ -29,7 +29,7 @@
     <Property Name="Quantity" Type="int" Nullable="false" />
     <Property Name="DefaultImageURL" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
-  <EntityType Name="OrderSet">
+  <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -39,7 +39,7 @@
     <Property Name="ReceiverPhone" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ReceiverAddress" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="OrderDetailSet">
+  <EntityType Name="OrderDetails">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -50,8 +50,8 @@
     <Property Name="Quantity" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="OrderOrderDetail">
-    <End Role="Order" Type="CartsModel.Store.OrderSet" Multiplicity="1" />
-    <End Role="OrderDetail" Type="CartsModel.Store.OrderDetailSet" Multiplicity="*" />
+    <End Role="Order" Type="CartsModel.Store.Orders" Multiplicity="1" />
+    <End Role="OrderDetail" Type="CartsModel.Store.OrderDetails" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Order">
         <PropertyRef Name="Id" />
@@ -67,11 +67,11 @@
       <Schema Namespace="CartsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CartsEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Products" EntityType="CartsModel.Product" />
-          <EntitySet Name="OrderSet" EntityType="CartsModel.Order" />
-          <EntitySet Name="OrderDetailSet" EntityType="CartsModel.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="CartsModel.Order" />
+          <EntitySet Name="OrderDetails" EntityType="CartsModel.OrderDetail" />
           <AssociationSet Name="OrderOrderDetail" Association="CartsModel.OrderOrderDetail">
-            <End Role="Order" EntitySet="OrderSet" />
-            <End Role="OrderDetail" EntitySet="OrderDetailSet" />
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Product">
@@ -145,9 +145,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderSet">
+    <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="IsTypeOf(CartsModel.Order)">
-        <MappingFragment StoreEntitySet="OrderSet">
+        <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
@@ -156,9 +156,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderDetailSet">
+    <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="IsTypeOf(CartsModel.OrderDetail)">
-        <MappingFragment StoreEntitySet="OrderDetailSet">
+        <MappingFragment StoreEntitySet="OrderDetails">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
