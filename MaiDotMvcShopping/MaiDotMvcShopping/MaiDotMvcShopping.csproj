@@ -184,6 +184,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageUserController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RouteTestController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Metadata\ProductPartial.cs" />
     <Compile Include="Models\Carts\Operation.cs" />
+    <Compile Include="Models\OrderModel\Ship.cs" />
     <Compile Include="Models\Product.cs">
       <DependentUpon>Carts.tt</DependentUpon>
     </Compile>
@@ -358,6 +360,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Order\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
