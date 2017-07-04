@@ -60,6 +60,24 @@
                 }
             });
         }
+        function ClearCart() {
+            /// <summary>
+            /// 清空購物車內所有商品
+            /// </summary>
+            /// <returns></returns>
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ClearCart","Cart")',
+                data: {},
+                error: function (message) {
+                    console.log(message);
+                },
+                success: function (message) {
+                    $('li#Cart').html(message);
+                    console.log("已清空");
+                }
+            });
+        }
     </script>
 </head>
 <body>
