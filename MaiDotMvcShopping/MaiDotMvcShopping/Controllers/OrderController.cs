@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 
 namespace MaiDotMvcShopping.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         // GET: Order
