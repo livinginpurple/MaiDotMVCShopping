@@ -21,6 +21,11 @@ namespace MaiDotMvcShopping.Controllers
 
         public ActionResult Details(int id)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
             using (Models.CartsEntities db = new Models.CartsEntities())
             {
                 // 取得 OrderId 為傳入 id 的所有商品列表
@@ -32,11 +37,9 @@ namespace MaiDotMvcShopping.Controllers
                 {
                     return View(result);
                 }
-                else
-                {
-                    // 如果商品數目為零，代表該訂單異常 (無商品)。導回商品列表。
-                    return RedirectToAction("Index");
-                }
+
+                // 如果商品數目為零，代表該訂單異常 (無商品)。導回商品列表。
+                return RedirectToAction("Index");
             }
         }
     }
