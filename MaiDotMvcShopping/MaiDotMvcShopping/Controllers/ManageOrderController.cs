@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MaiDotMvcShopping.Controllers
 {
+    [Authorize]
     public class ManageOrderController : Controller
     {
         // GET: ManageOrder
