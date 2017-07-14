@@ -6,11 +6,16 @@
 }
 
 <h2>訂單列表</h2>
-
+@using (Html.BeginForm("SearchByUserName", "ManageOrder"))
+{
+    @Html.AntiForgeryToken()
+    @Html.TextBox("UserName", null, new { @class ="btn-info"})
+    <input type="submit" value="搜尋" class="btn btn-default" />
+}
 <table class="table">
     <tr>
         <th>購買會員編號</th>
-        <th>購買會員暱稱</th>
+        <th>購買會員</th>
         <th>收貨人姓名</th>
         <th>收貨人電話</th>
         <th>收貨人住址</th>

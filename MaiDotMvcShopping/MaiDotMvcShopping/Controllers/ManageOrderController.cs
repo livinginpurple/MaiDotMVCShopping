@@ -42,5 +42,36 @@ namespace MaiDotMvcShopping.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        [ValidateAntiForgeryToken]
+        public ActionResult SearchByUserName(string userName)
+        {
+            // 儲存查詢出來的 UserId
+            string SearchUserId = null;
+            using (Models.UserEntities db = new Models.UserEntities())
+            {
+                SearchUserId = db.AspNetUsers
+                    .Where(w => w.UserName == userName)
+                    .Select(s => s.Id).FirstOrDefault();
+            }
+
+            // 如果有存在 UserId
+            if (!string.IsNullOrEmpty(SearchUserId))
+            {
+                // 將該 UserId 的所有訂單找出
+                using (Models.CartsEntities db = new Models.CartsEntities())
+                {
+                    var result = db.Orders
+                        .Where(w => w.UserId == SearchUserId)
+                        .Select(s => s).ToList();
+
+                    // 回傳 結果 至 Index 頁面
+                    return View("Index", result);
+                }
+            }
+
+            // 回傳 空結果 至 Index View
+            return View("Index", new List<Models.Order>());
+        }
     }
 }
