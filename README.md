@@ -4,9 +4,9 @@
 此為改作練習教學程式。
 
 ## 運行環境
-Windows 7 Pro
-Visual Studio 2015
-SQL Server 2014 Developer
+- Windows 7 Pro
+- Visual Studio 2015
+- SQL Server 2014 Developer Edition
 
 ## 檔案結構
 1. Carts Database Backup：Cart.bak資料庫之備份檔案，可使用 SQL Server 直接還原回去。
