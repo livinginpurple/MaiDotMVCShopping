@@ -55,5 +55,37 @@ namespace MaiDotMvcShopping.Controllers
             }
             return View();
         }
+
+        public ActionResult MyOrder()
+        {
+            // 取得目前登入使用者 Id
+            var UserId = HttpContext.User.Identity.GetUserId();
+
+            using (Models.CartsEntities db = new Models.CartsEntities())
+            {
+                var result = db.Orders
+                    .Where(w => w.UserId == UserId)
+                    .Select(s => s).ToList();
+
+                return View(result);
+            }
+        }
+
+        public ActionResult MyOrderDetail(int id)
+        {
+            using (Models.CartsEntities db = new Models.CartsEntities())
+            {
+                var result = db.OrderDetails
+                    .Where(w => w.OrderId == id)
+                    .Select(s => s).ToList();
+
+                if (result.Any())
+                {
+                    return View(result);
+                }
+
+                return RedirectToAction("Index");
+            }
+        }
     }
 }
