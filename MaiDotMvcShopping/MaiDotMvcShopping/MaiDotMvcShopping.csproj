@@ -229,6 +229,9 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>Carts.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductComment.cs">
+      <DependentUpon>Carts.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RouteTest\TempProduct.cs" />
     <Compile Include="Models\User.Context.cs">
       <AutoGen>True</AutoGen>
@@ -370,6 +373,7 @@
     <Content Include="Views\ManageOrder\Index.cshtml" />
     <Content Include="Views\ManageOrder\Details.cshtml" />
     <Content Include="Views\Order\MyOrder.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

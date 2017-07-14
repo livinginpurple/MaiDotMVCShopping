@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/04/2017 16:04:07
+-- Date Created: 07/14/2017 14:24:32
 -- Generated from EDMX file: C:\Users\RogerChen\Documents\Visual Studio 2015\Projects\MaiDotMVCShopping\MaiDotMvcShopping\MaiDotMvcShopping\Models\Carts.edmx
 -- --------------------------------------------------
 
@@ -18,7 +18,7 @@ GO
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK_OrderOrderDetail]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[OrderDetailSet] DROP CONSTRAINT [FK_OrderOrderDetail];
+    ALTER TABLE [dbo].[OrderDetails] DROP CONSTRAINT [FK_OrderOrderDetail];
 GO
 
 -- --------------------------------------------------
@@ -28,11 +28,11 @@ GO
 IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Products];
 GO
-IF OBJECT_ID(N'[dbo].[OrderSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[OrderSet];
+IF OBJECT_ID(N'[dbo].[Orders]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Orders];
 GO
-IF OBJECT_ID(N'[dbo].[OrderDetailSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[OrderDetailSet];
+IF OBJECT_ID(N'[dbo].[OrderDetails]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[OrderDetails];
 GO
 
 -- --------------------------------------------------
@@ -74,6 +74,16 @@ CREATE TABLE [dbo].[OrderDetails] (
 );
 GO
 
+-- Creating table 'ProductComments'
+CREATE TABLE [dbo].[ProductComments] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [UserId] nvarchar(max)  NOT NULL,
+    [Content] nvarchar(max)  NOT NULL,
+    [CreateDate] datetime  NOT NULL,
+    [ProductId] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -93,6 +103,12 @@ GO
 -- Creating primary key on [Id] in table 'OrderDetails'
 ALTER TABLE [dbo].[OrderDetails]
 ADD CONSTRAINT [PK_OrderDetails]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'ProductComments'
+ALTER TABLE [dbo].[ProductComments]
+ADD CONSTRAINT [PK_ProductComments]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

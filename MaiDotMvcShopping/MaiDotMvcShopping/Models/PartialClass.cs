@@ -31,4 +31,27 @@ namespace MaiDotMvcShopping.Models
             }
         }
     }
+
+    /// <summary>
+    /// 定義 Models.ProductComments 的部分類別
+    /// </summary>
+    public partial class ProductComment
+    {
+        /// <summary>
+        /// 取得訂單中的使用者暱稱
+        /// </summary>
+        /// <returns>回傳 使用者暱稱</returns>
+        public string GetUserName(string userId)
+        {
+            using (Models.UserEntities db = new UserEntities())
+            {
+                var result = db.AspNetUsers
+                    .Where(w => w.Id == userId)
+                    .Select(s => s.UserName).FirstOrDefault();
+
+                // 回傳找到的 UserName
+                return result;
+            }
+        }
+    }
 }
