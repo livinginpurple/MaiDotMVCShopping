@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+## Welcome to MaiDotMVCShopping
 
-You can use the [editor on GitHub](https://github.com/livinginpurple/MaiDotMVCShopping/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+原始程式範例來自於買大 [(MaiDot)](https://maidot.blogspot.tw/2014/10/aspnet-mvc.html)
+此為改作練習教學程式。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## 運行環境
+Windows 7 Pro
+Visual Studio 2015
+SQL Server 2014 Developer
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/livinginpurple/MaiDotMVCShopping/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## 檔案結構
+1. Carts Database Backup：Cart.bak資料庫之備份檔案，可使用 SQL Server 直接還原回去。
+2. DatabaseCarts：Carts 資料庫之資料庫專案。
+3. LocalDb：存放 Identity 使用之會員 LocalDB File，需放置至：\MaiDotMvcShopping\MaiDotMvcShopping\App_Data 下
+4. MaiDotMvcShopping：實際專案程式碼
