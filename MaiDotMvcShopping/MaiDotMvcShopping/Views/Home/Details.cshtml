@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var CommentLsit = new List<MaiDotMvcShopping.Models.ProductComment>();
+    var CommentList = new List<MaiDotMvcShopping.Models.ProductComment>();
     using (MaiDotMvcShopping.Models.CartsEntities db = new MaiDotMvcShopping.Models.CartsEntities())
     {
-        CommentLsit = db.ProductComments.Where(w => w.ProductId == this.Model.Id).Select(s => s).ToList();
+        CommentList = db.ProductComments.Where(w => w.ProductId == this.Model.Id).Select(s => s).ToList();
     }
 }
 
@@ -40,7 +40,7 @@
     </dl>
 
     <dl class="dl-horizontal">
-        @foreach (var item in CommentLsit)
+        @foreach (var item in CommentList)
         {
             @*<dt>@item.UserId：</dt>*@
             <dt>@item.GetUserName(item.UserId)：</dt>
